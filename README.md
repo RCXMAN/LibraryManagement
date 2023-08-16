@@ -25,6 +25,12 @@ User Lending Page:
 User Reservation Page:
 <img width="1346" alt="image" src="https://github.com/RCXMAN/LibraryManagement/assets/36804741/f4e51721-0ad1-4459-8e73-2dfae6d8c62c">
 
+Detail of Book:
+<img width="1343" alt="image" src="https://github.com/RCXMAN/LibraryManagement/assets/36804741/8f1333ba-c21c-4ceb-a5b8-6f2a37a07f7a">
+
+Error Message:
+<img width="605" alt="image" src="https://github.com/RCXMAN/LibraryManagement/assets/36804741/509e6508-763f-45dd-b25a-dbd2be9e12cf">
+
 # Features
 * Sign in, Sign up, Logout with jwt token
 * Research book by title, author name, book subject, publication data

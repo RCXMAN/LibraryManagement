@@ -3,6 +3,10 @@ This is a simple web application to implement the library management system,
 members can register, log in, search books, borrow books, reserve books, extend books and so on. 
 Lirarian can query the user, block Member, unblock Member, etc.
 
+
+### For Live Demo: ###
+[Clike Here](http://libraryms.s3-website-eu-west-1.amazonaws.com/)
+
 # Screenshot
 Home Page:
 <img width="1366" alt="image" src="https://github.com/RCXMAN/LibraryManagement/assets/36804741/2210603a-d759-41fc-a925-ffcab1a53a3d">

@@ -2,7 +2,6 @@ package com.example.librarymanagement.service.Imp;
 
 
 import com.example.librarymanagement.constant.ExceptionConstants;
-import com.example.librarymanagement.constant.LibraryConstants;
 import com.example.librarymanagement.controller.request.AuthenticationRequest;
 import com.example.librarymanagement.controller.request.RegisterRequest;
 import com.example.librarymanagement.controller.request.ResetPasswordRequest;
@@ -40,7 +39,7 @@ public class AuthenticationService {
                 .role(RoleEnum.MEMBER)
                 .card(new LibraryCard())
                 .dataOfMembership(LocalDate.now())
-                .totalBooksCheckedOut(LibraryConstants.MAX_BOOK_LIMIT)
+                .totalBooksCheckedOut(0)
                 .build();
         memberRepository.save(member);
 

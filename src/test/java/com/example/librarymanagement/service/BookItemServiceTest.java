@@ -146,7 +146,7 @@ class BookItemServiceTest {
 
         assertThatThrownBy(() -> bookItemService.removeBook(itemId))
                 .isInstanceOf(BookNotAvailableException.class)
-                .hasMessageContaining(ExceptionConstants.NOT_AVAILABLE);
+                .hasMessageContaining(ExceptionConstants.NOT_AVAILABLE_DELETE);
     }
 
 

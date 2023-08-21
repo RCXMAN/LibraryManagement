@@ -5,6 +5,7 @@ import com.example.librarymanagement.exception.NoSuchSourceException;
 import com.example.librarymanagement.model.BookItem;
 import com.example.librarymanagement.model.BookReservation;
 import com.example.librarymanagement.model.Member;
+import com.example.librarymanagement.model.enums.BookStatusEnum;
 import com.example.librarymanagement.model.enums.ReservationStatusEnum;
 import com.example.librarymanagement.repository.BookReservationRepository;
 import com.example.librarymanagement.service.Imp.BookReservationServiceImp;
@@ -94,11 +95,15 @@ class BookReservationServiceImpTest {
         bookReservation.setId(reservationId);
         bookReservation.setStatus(ReservationStatusEnum.WAITING);
 
+        BookItem bookItem = new BookItem();
+        bookItem.setStatus(BookStatusEnum.RESERVED);
+        bookReservation.setBookItem(bookItem);
+
         when(bookReservationRepository.findById(reservationId)).thenReturn(Optional.of(bookReservation));
 
         BookReservation canceledReservation = bookReservationServiceImp.cancelReserve(reservationId);
-
-        Assertions.assertEquals(ReservationStatusEnum.CANCELED, canceledReservation.getStatus());
+        assertEquals(ReservationStatusEnum.CANCELED, canceledReservation.getStatus());
+        assertEquals(BookStatusEnum.LOANED, bookItem.getStatus());
     }
 
     @Test

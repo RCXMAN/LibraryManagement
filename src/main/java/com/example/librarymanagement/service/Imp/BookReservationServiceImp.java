@@ -5,6 +5,7 @@ import com.example.librarymanagement.exception.NoSuchSourceException;
 import com.example.librarymanagement.model.BookItem;
 import com.example.librarymanagement.model.BookReservation;
 import com.example.librarymanagement.model.Member;
+import com.example.librarymanagement.model.enums.BookStatusEnum;
 import com.example.librarymanagement.model.enums.ReservationStatusEnum;
 import com.example.librarymanagement.repository.BookReservationRepository;
 import com.example.librarymanagement.service.BookReservationService;
@@ -61,6 +62,7 @@ public class BookReservationServiceImp implements BookReservationService {
                 .findById(reservationId)
                 .orElseThrow(() -> new NoSuchSourceException(ExceptionConstants.NO_SUCH_RESERVATION));
 
+        bookReservation.getBookItem().setStatus(BookStatusEnum.LOANED);
         bookReservation.setStatus(ReservationStatusEnum.CANCELED);
         bookReservationRepository.save(bookReservation);
 

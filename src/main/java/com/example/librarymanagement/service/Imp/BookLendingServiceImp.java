@@ -17,6 +17,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -74,5 +75,13 @@ public class BookLendingServiceImp implements BookLendingService {
 
         return bookLendingRepository.findById(lendingId)
                 .orElseThrow(() -> new NoSuchSourceException(ExceptionConstants.NO_SUCH_LENDING));
+    }
+
+    @Override
+    public boolean checkIfLendByCurrentUser(BookItem bookItem, String username) {
+        Optional<BookLending> bookLending = bookLendingRepository.findByMemberAndBookItemAndReturnDateIsNull(
+                memberService.getMember(username),
+                bookItem);
+        return bookLending.isPresent();
     }
 }

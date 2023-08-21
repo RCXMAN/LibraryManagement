@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/library/lending")
-@CrossOrigin(origins ="http://localhost:3000")
+@CrossOrigin
 public class BookLendingController {
 
     private final BookLendingService bookLendingService;

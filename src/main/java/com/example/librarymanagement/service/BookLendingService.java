@@ -12,4 +12,6 @@ public interface BookLendingService {
     BookLending prolongLending(BookItem bookItem);
     BookLending endLending(BookItem bookItem);
     BookLending getLendingDetail(Long lendingId);
+
+    boolean checkIfLendByCurrentUser(BookItem bookItem, String username);
 }

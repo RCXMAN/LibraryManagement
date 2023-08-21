@@ -43,6 +43,7 @@ public class BookItemServiceImp implements BookItemService {
     }
     @Override
     public BookItem addBookItem(BookItem bookItem) {
+        bookItem.setStatus(BookStatusEnum.AVAILABLE);
         return bookItemRepository.save(bookItem);
     }
     @Override
@@ -54,7 +55,7 @@ public class BookItemServiceImp implements BookItemService {
         BookItem book = bookItemRepository.findById(itemId)
                 .orElseThrow(() -> new NoSuchSourceException(ExceptionConstants.NO_SUCH_BOOK));
         if (book.getStatus() != BookStatusEnum.AVAILABLE) {
-            throw new BookNotAvailableException();
+            throw new BookNotAvailableException(ExceptionConstants.NOT_AVAILABLE_DELETE);
         }
         bookItemRepository.deleteById(itemId);
     }
@@ -154,6 +155,9 @@ public class BookItemServiceImp implements BookItemService {
             bookItemRepository.save(book);
             bookReservationService.createReservation(book);
         } else if (book.getStatus() == BookStatusEnum.LOANED) {
+            if (bookLendingService.checkIfLendByCurrentUser(book, username)) {
+                throw new BookNotAvailableException(ExceptionConstants.ALREADY_LEND_BEFORE);
+            }
             book.setStatus(BookStatusEnum.RESERVED);
             bookItemRepository.save(book);
             bookReservationService.createReservation(book);

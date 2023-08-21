@@ -19,7 +19,7 @@ public class BookLending {
     private LocalDate creationDate;
     private LocalDate dueDate;
     private LocalDate returnDate;
-    @OneToOne
+    @ManyToOne
     private BookItem bookItem;
     @ManyToOne
     @JsonIgnore

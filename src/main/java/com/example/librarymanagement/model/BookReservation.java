@@ -15,7 +15,7 @@ public class BookReservation {
     @GeneratedValue
     private Long id;
 
-    @OneToOne
+    @ManyToOne
     private BookItem bookItem;
 
     @ManyToOne

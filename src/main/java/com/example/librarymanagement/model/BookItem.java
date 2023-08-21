@@ -33,5 +33,4 @@ public class BookItem extends Book {
 
     @OneToOne(cascade = {CascadeType.PERSIST})
     private Rack placedAt;
-
 }
